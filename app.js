@@ -59,6 +59,11 @@ app.use(helmet());
 app.use(morgan("dev"));
 
 //SERVING TEMPLATE DEMO
+app.use(express.static('public'))
+//index.js
+app.get('/', (req, res) => {
+  res.sendFile('index.html', {root: path.join(__dirname, 'public')});
+})
 app.use(express.static(`${__dirname}/nft-data/img`));
 
 //CUSTOM MIDDLE WARE
